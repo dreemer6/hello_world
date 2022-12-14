@@ -23,11 +23,11 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - checkout
+      - attach_workspace:
+          at: ~/
       - run: 
           name: "Print content in workspace file" 
           command: cat ~/output.txt
-      - attach_workspace:
-          at: ~/
 
 
 # Invoke jobs via workflows

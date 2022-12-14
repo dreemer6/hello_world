@@ -13,9 +13,9 @@ jobs:
       - run:
           name: "output hello world to file"
           command: |
-            echo "Hello World" > output.txt
+            echo "Hello World" > ~/output.txt
       - persist_to_workspace:
-          root: /tmp/workspace
+          root: ~/
           paths: 
             - output.txt
   print_output_file:
@@ -25,9 +25,9 @@ jobs:
       - checkout
       - run: 
           name: "Print content in workspace file" 
-          command: cat output.txt
+          command: cat ~/output.txt
       - attach_workspace:
-          at: /tmp/workspace
+          at: ~/
 
 
 # Invoke jobs via workflows

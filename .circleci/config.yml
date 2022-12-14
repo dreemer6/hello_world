@@ -42,6 +42,15 @@ jobs:
       - run: 
           name: "Print content in workspace file" 
           command: cat ~/output.txt
+  error_check:
+    docker:
+      - image: image: circleci/node:13.8.0
+    steps:
+      run: exit 1
+      run:
+        name: "See the output when there's an error"
+        command: echo "Hello Error!!!"
+        when: on_fail
 
 
 # Invoke jobs via workflows
@@ -54,5 +63,6 @@ workflows:
           requires: 
            - save_hello_world_output
       - my_job
+      - error_check
 
 # VS Code Extension Version: 1.4.0

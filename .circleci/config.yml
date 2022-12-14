@@ -44,7 +44,7 @@ jobs:
           command: cat ~/output.txt
   error_check:
     docker:
-      - image: image: circleci/node:13.8.0
+      - image: circleci/node:13.8.0
     steps:
       run: exit 1
       run:

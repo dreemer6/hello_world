@@ -32,6 +32,13 @@ jobs:
       - run:
           name: "Print world"
           command: "echo world"
+  print-my-name:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - run:
+          name: "Print my name"
+          command: "echo $MY_NAME"
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -43,5 +50,6 @@ workflows:
       - print-world:
           requires: 
             - print-hello
+      - print-my-name
 
 # VS Code Extension Version: 1.4.0
